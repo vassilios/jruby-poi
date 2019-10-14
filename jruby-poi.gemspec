@@ -20,8 +20,8 @@ Gem::Specification.new do |s|
   s.rubygems_version = "1.8.24"
   s.summary = "Apache POI class library for jruby"
 
-  s.requirements << 'jar org.apache.poi, poi, 3.15'
-  s.requirements << 'jar org.apache.poi, poi-ooxml, 3.15'
+  s.requirements << 'jar org.apache.poi, poi, 4.1.0'
+  s.requirements << 'jar org.apache.poi, poi-ooxml, 4.1.0'
 
   s.add_development_dependency("rspec", "~> 3.0")
   s.add_development_dependency("jar-dependencies", "~> 0.4.0")

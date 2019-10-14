@@ -28,12 +28,12 @@ module POI
     DATE_UTIL         = Java::org.apache.poi.ss.usermodel.DateUtil
     CELL              = Java::org.apache.poi.ss.usermodel.Cell
     CELL_VALUE        = Java::org.apache.poi.ss.usermodel.CellValue
-    CELL_TYPE_BLANK   = CELL::CELL_TYPE_BLANK
-    CELL_TYPE_BOOLEAN = CELL::CELL_TYPE_BOOLEAN
-    CELL_TYPE_ERROR   = CELL::CELL_TYPE_ERROR
-    CELL_TYPE_FORMULA = CELL::CELL_TYPE_FORMULA
-    CELL_TYPE_NUMERIC = CELL::CELL_TYPE_NUMERIC
-    CELL_TYPE_STRING  = CELL::CELL_TYPE_STRING
+    CELL_TYPE_BLANK   = Java::org.apache.poi.ss.usermodel.CellType::BLANK
+    CELL_TYPE_BOOLEAN = Java::org.apache.poi.ss.usermodel.CellType::BOOLEAN
+    CELL_TYPE_ERROR   = Java::org.apache.poi.ss.usermodel.CellType::ERROR
+    CELL_TYPE_FORMULA = Java::org.apache.poi.ss.usermodel.CellType::FORMULA
+    CELL_TYPE_NUMERIC = Java::org.apache.poi.ss.usermodel.CellType::NUMERIC
+    CELL_TYPE_STRING  = Java::org.apache.poi.ss.usermodel.CellType::STRING
     
     def initialize(cell, row)
       @cell = cell
