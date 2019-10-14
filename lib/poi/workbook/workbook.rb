@@ -145,7 +145,7 @@ module POI
     #
     # If the reference refers to a multiple columns a Hash of values will be returned by column name.
     def [](reference)
-      if Fixnum === reference
+      if Integer === reference
         return worksheets[reference]
       end
       

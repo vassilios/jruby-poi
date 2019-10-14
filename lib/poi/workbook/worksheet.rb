@@ -57,7 +57,7 @@ module POI
     #    if the value of the reference is non-nil the value is returned,
     #    otherwise the referenced cell is returned
     def [](row_index)
-      if Fixnum === row_index
+      if Integer === row_index
         rows[row_index]
       else
         ref = org.apache.poi.ss.util.CellReference.new(row_index)
