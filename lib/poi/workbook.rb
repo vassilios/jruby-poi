@@ -1,7 +1,7 @@
 module POI
   AREA_REF = org.apache.poi.ss.util.AreaReference
   CELL_REF = org.apache.poi.ss.util.CellReference
-  
+
   def self.Facade(delegate, java_class)
     cls = Class.new
     java_class.java_class.java_instance_methods.select{|e| e.public?}.each do | method |
@@ -26,7 +26,7 @@ module POI
       elsif method.return_type.nil? && (method.argument_types.nil? || method.argument_types.empty?)
         code += "\nalias :#{method_name}! :#{method_name}"
       end
-      
+
       cls.class_eval(code, __FILE__, __LINE__)
     end
     cls

@@ -34,17 +34,17 @@ module POI
     CELL_TYPE_FORMULA = Java::org.apache.poi.ss.usermodel.CellType::FORMULA
     CELL_TYPE_NUMERIC = Java::org.apache.poi.ss.usermodel.CellType::NUMERIC
     CELL_TYPE_STRING  = Java::org.apache.poi.ss.usermodel.CellType::STRING
-    
+
     def initialize(cell, row)
       @cell = cell
       @row  = row
     end
-    
+
     def <=> other
       return 1 if other.nil?
       return self.index <=> other.index
     end
-    
+
     # This is NOT an inexpensive operation. The purpose of this method is merely to get more information
     # out of cell when one thinks the value returned is incorrect. It may have more value in development
     # than in production.
@@ -53,19 +53,19 @@ module POI
         error_value_from(poi_cell.error_cell_value)
       elsif poi_cell.cell_type == CELL_TYPE_FORMULA && 
             poi_cell.cached_formula_result_type == CELL_TYPE_ERROR
-            
+
         cell_value = formula_evaluator.evaluate(poi_cell)
         cell_value && error_value_from(cell_value.error_value)
       else
         nil
       end
     end
-    
+
     # returns the formula for this Cell if it has one, otherwise nil
     def formula_value
       poi_cell.cell_type == CELL_TYPE_FORMULA ? poi_cell.cell_formula : nil
     end
-    
+
     def value
       return nil if poi_cell.nil?
       cast_value
@@ -97,7 +97,7 @@ module POI
 
     def index
       poi_cell.column_index 
-    end    
+    end 
 
     # Get the String representation of this Cell's value.
     #
@@ -117,14 +117,14 @@ module POI
     def poi_cell
       @cell
     end
-    
+
     # :cell_style= comes from the Façade superclass
     alias :style= :cell_style=
-    
+
     def style! options
       self.style = @row.worksheet.workbook.create_style(options)
     end
-    
+
     private
       def cast_value(type = cell_type)
         case type
