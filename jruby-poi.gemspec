@@ -2,7 +2,6 @@ require File.expand_path("../lib/poi/version", __FILE__)
 
 Gem::Specification.new do |s|
   s.name = "jruby-poi"
-  s.platform = "java"
 
   s.version = POI.version
   s.authors = ["Scott Deming", "Jason Rogers"]
