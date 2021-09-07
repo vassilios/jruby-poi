@@ -2,6 +2,7 @@ require 'bundler/setup'
 require 'rake'
 require 'rake/clean'
 require 'rspec/core/rake_task'
+require 'jars/installer'
 require_relative './lib/poi/version'
 
 NAME = 'jruby-poi'
@@ -23,6 +24,11 @@ RSpec::Core::RakeTask.new('spec')
 desc "Print version"
 task :version do
   puts VERSION
+end
+
+desc "Vendor JAR files"
+task :install_jars do
+  Jars::Installer.vendor_jars!
 end
 
 task :default => :spec

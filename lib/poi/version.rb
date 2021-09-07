@@ -1,5 +1,5 @@
 module POI
-  MAJOR = 2
+  MAJOR = 3
   MINOR = 0
   PATCH_LEVEL = 0
 
