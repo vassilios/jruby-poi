@@ -5,7 +5,10 @@ module POI
   def self.Facade(delegate, java_class)
     cls = Class.new
     java_class.java_class.java_instance_methods.select{|e| e.public?}.each do | method |
-      args = method.arity.times.collect{|i| "arg#{i}"}.join(", ")
+      # Edited this line to use arity instead of depending on prameter count in args
+      meth0d = method.respond_to?(:parameter_count) ? method.parameter_count : method.arity
+      args = meth0d.times.collect{|i| "arg#{i}"}.join(", ")
+
       method_name = method.name.gsub(/([A-Z])/){|e| "_#{e.downcase}"}
       code = "def #{method_name}(#{args}); #{delegate}.#{method.name}(#{args}); end"
 
@@ -15,7 +18,7 @@ module POI
         if method.return_type.to_s == 'boolean'
           code += "\nalias :#{alias_method_name}? :#{method_name}"
         end
-      elsif method_name =~ /^set_[a-z]/ && method.arity == 1
+      elsif method_name =~ /^set_[a-z]/ && meth0d == 1
         alias_method_name = "#{method_name.sub('set_', '')}"
         code += "\nalias :#{alias_method_name}= :#{method_name}"
         if method.argument_types.first.to_s == 'boolean'
