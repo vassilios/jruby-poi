@@ -22,7 +22,7 @@ module POI
 
     
     BORDER_STYLE = org.apache.poi.ss.usermodel.BorderStyle
-    BORDER_STYLE_CONSTANTS = Hash[*BORDER_STYLE.constants.map{|e| [e.downcase.to_sym, BORDER_STYLE.const_get(e)]}.flatten]
+    BORDER_STYLE_CONSTANTS = Hash[*BORDER_STYLE.constants.map{|e| ["border_#{e.downcase}".to_sym, BORDER_STYLE.const_get(e)]}.flatten]
 
     # constants combined
     CELL_STYLE_CONSTANTS = [HORIZONTAL_ALIGNMENT_CONSTANTS, VERTICAL_ALIGNMENT_CONSTANTS, FILL_PATTERN_CONSTANTS, BORDER_STYLE, BORDER_STYLE, BORDER_STYLE, BORDER_STYLE]
