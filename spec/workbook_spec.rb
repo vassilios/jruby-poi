@@ -357,7 +357,7 @@ describe POI::Cell do
 
     cell.formula = 'A10 + 1'
     book.cell('dates!B2').poi_cell.should === cell.poi_cell
-    book.cell('dates!B2').formula.should == 'A10 + 1'
+    book.cell('dates!B2').formula.should == 'A10 + 1'.gsub(' ', '') # rm whitespace
 
     book['dates!B2'].to_date.should == Date.parse('2010-03-09')
   end
